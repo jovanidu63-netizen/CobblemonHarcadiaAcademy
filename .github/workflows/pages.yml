@@ -1,0 +1,48 @@
+name: Build launcher and publish website
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'src/**'
+      - 'server/modpack/**'
+      - 'build.ps1'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - name: Build self-contained Windows launcher
+        shell: pwsh
+        run: >-
+          dotnet publish src/CobblemonHarcadiaAcademy.Launcher/CobblemonHarcadiaAcademy.Launcher.csproj
+          -c Release -r win-x64 --self-contained true
+          -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:EnableCompressionInSingleFile=true -p:NuGetAudit=false
+          -o outputs/publish
+      - name: Add launcher download to website
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force site/downloads | Out-Null
+          Copy-Item outputs/publish/CobblemonHarcadiaAcademy.exe site/downloads/CobblemonHarcadiaAcademy.exe -Force
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

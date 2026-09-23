@@ -1,0 +1,27 @@
+name: Prepare HelloServ server package
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install Fabric server and pinned mods
+        shell: pwsh
+        run: ./server/Install-Server.ps1
+      - name: Package files for HelloServ
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force outputs | Out-Null
+          Compress-Archive -Path server/* -DestinationPath outputs/CobblemonHarcadiaAcademy-Fabric-Server.zip -Force
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CobblemonHarcadiaAcademy-Fabric-Server
+          path: outputs/CobblemonHarcadiaAcademy-Fabric-Server.zip
+          if-no-files-found: error
