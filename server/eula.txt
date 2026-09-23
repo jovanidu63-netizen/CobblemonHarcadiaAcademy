@@ -1,0 +1,2 @@
+# EULA Minecraft : lisez https://aka.ms/MinecraftEULA et modifiez eula=false en eula=true si vous l'acceptez.
+eula=false
