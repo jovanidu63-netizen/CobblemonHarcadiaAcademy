@@ -18,5 +18,7 @@
     <None Update="modpack.manifest.example.json" CopyToOutputDirectory="PreserveNewest" />
     <Resource Include="Assets\logo.svg" />
     <Resource Include="Assets\harcadia-background.png" />
+    <Resource Include="Assets\discord-pokeball.jpg" />
+    <Resource Include="Assets\boutique-logo.png" />
   </ItemGroup>
 </Project>
