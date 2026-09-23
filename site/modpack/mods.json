@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "minecraft": "1.21.1",
+  "loader": "fabric",
+  "modrinthVersions": [
+    "YgmyyFcs",
+    "IpaMcBLh"
+  ],
+  "files": []
+}
