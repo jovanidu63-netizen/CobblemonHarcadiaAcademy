@@ -49,7 +49,7 @@ Chaque chemin est relatif au dossier Minecraft, chaque lien doit être en HTTPS 
 - Il faudra vérifier que le serveur est en ligne et autorise les connexions avant d’annoncer l’ouverture.
 - Le manifeste du modpack et le site vitrine utilisent l’adresse HTTPS gratuite de GitHub Pages. Le site et le serveur de jeu sont des services distincts.
 - Logo officiel du serveur et droits d’utilisation. Un emblème temporaire est inclus dans l’interface ; remplacez `Assets/logo.svg` et personnalisez l’en-tête dans `MainWindow.xaml`.
-- Le launcher demande une connexion Microsoft et utilise le profil Minecraft Java obtenu pour lancer le jeu. Les jetons de compte restent en mémoire le temps de l’exécution du launcher ; le mot de passe Microsoft n’est ni demandé par le launcher ni enregistré par celui-ci.
+- Le launcher demande une connexion Microsoft et utilise le profil Minecraft Java obtenu pour lancer le jeu. CmlLib conserve la session de compte pour faciliter les connexions suivantes dans `cml_accounts.json` du dossier Minecraft ; le mot de passe Microsoft n’est ni demandé par le launcher ni enregistré par celui-ci.
 
 ## Site gratuit et financement du serveur
 
@@ -63,7 +63,7 @@ Pour produire le ZIP : pousser le projet sur GitHub, ouvrir **Actions → Prepar
 
 ## Réglages et données
 
-Le dossier de jeu initial est `%LOCALAPPDATA%\CobblemonHarcadiaAcademy\.minecraft`. Les réglages RAM et dossier sont conservés sous `%LOCALAPPDATA%\CobblemonHarcadiaAcademy\settings.json`. Les jetons de compte ne sont pas sauvegardés par le launcher.
+Le dossier de jeu initial est `%LOCALAPPDATA%\CobblemonHarcadiaAcademy\.minecraft`. Les réglages RAM et dossier sont conservés sous `%LOCALAPPDATA%\CobblemonHarcadiaAcademy\settings.json`. La session Microsoft du compte est conservée par CmlLib dans `cml_accounts.json` du dossier Minecraft.
 
 ## Structure
 
