@@ -33,9 +33,7 @@ public partial class MainWindow : Window
         try
         {
             if (File.Exists(_configFile)) _config = JsonSerializer.Deserialize<LauncherConfig>(File.ReadAllText(_configFile), JsonOptions()) ?? new();
-            _loginHandler = new JELoginHandlerBuilder()
-                .WithAccountManager(new InMemoryXboxGameAccountManager(JEGameAccount.FromSessionStorage))
-                .Build();
+            _loginHandler = JELoginHandlerBuilder.BuildDefault();
             Title = _config.ServerName;
             TitleText.Text = _config.ServerName;
             VersionText.Text = $"MINECRAFT {_config.MinecraftVersion} · FABRIC";
