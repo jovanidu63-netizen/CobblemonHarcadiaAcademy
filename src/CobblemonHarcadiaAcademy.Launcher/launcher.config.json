@@ -9,6 +9,8 @@
   "serverAddress": "game06.helloserv.fr",
   "serverPort": 25512,
   "modpackManifestUrl": "https://jovanidu63-netizen.github.io/CobblemonHarcadiaAcademy/modpack/mods.json",
+  "discordUrl": "REMPLACER_PAR_LIEN_DISCORD",
+  "storeUrl": "REMPLACER_PAR_LIEN_BOUTIQUE",
   "clientId": "",
   "logoPath": "Assets/logo.svg"
 }

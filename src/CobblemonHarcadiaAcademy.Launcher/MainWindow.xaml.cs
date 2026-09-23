@@ -233,6 +233,23 @@ public partial class MainWindow : Window
         var dialog = new OpenFolderDialog { Title = "Choisir le dossier Minecraft" };
         if (dialog.ShowDialog() == true) DirectoryBox.Text = dialog.FolderName;
     }
+    private void Discord_Click(object sender, RoutedEventArgs e) => OpenCommunityLink(_config.DiscordUrl, "Discord");
+    private void Store_Click(object sender, RoutedEventArgs e) => OpenCommunityLink(_config.StoreUrl, "la boutique");
+    private void OpenCommunityLink(string url, string destination)
+    {
+        if (IsPlaceholder(url))
+        {
+            StatusText.Text = $"Ajoute le lien {destination} dans la configuration du launcher.";
+            OpenConfig_Click(this, new RoutedEventArgs());
+            return;
+        }
+        if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) || uri.Scheme != Uri.UriSchemeHttps)
+        {
+            MessageBox.Show($"Le lien {destination} doit commencer par https://", _config.ServerName, MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
+        }
+        Process.Start(new ProcessStartInfo(uri.AbsoluteUri) { UseShellExecute = true });
+    }
     private void RamSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
     { if (RamLabel is not null) RamLabel.Text = $"{(int)e.NewValue} Go"; }
     private void SaveSettings()
@@ -262,6 +279,8 @@ public sealed class LauncherConfig
     public string ServerAddress { get; set; } = "REMPLACER_PAR_ADRESSE_DU_SERVEUR";
     public int ServerPort { get; set; } = 25565;
     public string ModpackManifestUrl { get; set; } = "https://jovanidu63-netizen.github.io/CobblemonHarcadiaAcademy/modpack/mods.json";
+    public string DiscordUrl { get; set; } = "REMPLACER_PAR_LIEN_DISCORD";
+    public string StoreUrl { get; set; } = "REMPLACER_PAR_LIEN_BOUTIQUE";
     public string LogoPath { get; set; } = "Assets/logo.svg";
 }
 public sealed class ModpackManifest { public string Version { get; set; } = "1.0.0"; public string Minecraft { get; set; } = ""; public string Loader { get; set; } = ""; public List<string> ModrinthVersions { get; set; } = []; public List<ModpackFile> Files { get; set; } = []; }

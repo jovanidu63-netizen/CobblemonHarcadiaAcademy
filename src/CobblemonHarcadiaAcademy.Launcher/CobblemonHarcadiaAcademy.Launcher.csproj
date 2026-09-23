@@ -17,5 +17,6 @@
     <None Update="launcher.config.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="modpack.manifest.example.json" CopyToOutputDirectory="PreserveNewest" />
     <Resource Include="Assets\logo.svg" />
+    <Resource Include="Assets\harcadia-background.png" />
   </ItemGroup>
 </Project>
