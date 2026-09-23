@@ -1,0 +1,15 @@
+# .NET build output and local runtimes
+**/bin/
+**/obj/
+**/.nuget/
+/work/
+/outputs/publish/
+/outputs/*.exe
+/outputs/*.zip
+
+# Generated server artifacts
+/server/*.jar
+/server/eula.txt
+/server/logs/
+/server/mods/
+/server/modpack/mods.json
