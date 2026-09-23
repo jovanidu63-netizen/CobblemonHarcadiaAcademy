@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jovanidu63-netizen.github.io/CobblemonHarcadiaAcademy/sitemap.xml
