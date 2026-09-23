@@ -1,0 +1,14 @@
+{
+  "serverName": "CobblemonHarcadiaAcademy",
+  "minecraftVersion": "1.21.1",
+  "fabricLoaderVersion": "latest",
+  "defaultRamMb": 6144,
+  "minimumRamMb": 4096,
+  "maximumRamMb": 16384,
+  "gameDirectory": "",
+  "serverAddress": "game06.helloserv.fr",
+  "serverPort": 25512,
+  "modpackManifestUrl": "https://jovanidu63-netizen.github.io/CobblemonHarcadiaAcademy/modpack/mods.json",
+  "clientId": "",
+  "logoPath": "Assets/logo.svg"
+}

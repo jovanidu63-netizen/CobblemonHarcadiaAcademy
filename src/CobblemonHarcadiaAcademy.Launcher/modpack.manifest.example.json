@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "files": [
+    {
+      "path": "mods/REMPLACER_PAR_NOM_DU_MOD.jar",
+      "url": "https://example.invalid/mods/REMPLACER_PAR_NOM_DU_MOD.jar",
+      "sha256": "REMPLACER_PAR_SHA256_HEXADECIMAL"
+    }
+  ]
+}
